@@ -1,0 +1,22 @@
+ID:
+juarez
+janos
+praxedis
+galeana
+izaragoza
+aldama
+aserdan
+madera
+gfarias
+namiquipa
+
+ya esta agrupado:
+1
+11
+13
+12
+14
+22
+21
+20
+19

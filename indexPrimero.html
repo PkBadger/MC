@@ -1,0 +1,61 @@
+<head>
+
+	<script src="over/jquery-2.1.4.min.js"></script>
+	<script src="maphilight/jquery.maphilight.js"></script>
+	<script src="jquery-fracs/jquery.fracs-0.15.0.min.js"></script>
+	<script src="jquery-fracs/jquery.outline-0.15.0.min.js"></script>
+		
+
+
+  <!-- This is how you would link your custom stylesheet -->
+
+	
+</head>
+<body>
+	<div id="mapdiv" class="image-scroller">
+		<img src="DistritosVectores.svg" usemap="#mapname"class="map feature-image" id="mapa"/>
+		 
+	</div>
+
+	<map name="mapname">
+   	 	  <area id="0079" alt="79"shape="poly" coords="2361,1191,2347,1287,2355,1311,2351,1313,2371,1329,2371,1339,2425,1339,2423,1327,2445,1333,2467,1357,2467,1327,2477,1321,2489,1319,2543,1347,2561,1341,2585,1391,2623,1393,2655,1369,2661,1373,2669,1359,2671,1351,2699,1351,2683,1319,2691,1293,2699,1291,2695,1241,2697,1213,2707,1213,2703,1201,2699,1183,2723,1165,2737,1147,2771,1153,2761,1133,2755,1105,2775,1101,2775,1075,2813,1057,2819,1035,2829,1033,2829,1017,2741,1035,2735,1021,2735,1013,2721,1007,2725,983,2705,975,2689,975,2663,943,2607,929,2569,927,2553,945,2515,951,2403,943,2361,919,2303,931,2291,943,2267,923,2257,913,2235,905,2221,909,2209,899,2199,907,2171,927,2139,951,2143,965,2129,1001,2137,1055,2155,1117,2205,1129,2193,1137,2213,1161,2233,1163,2277,1191,2357,1189,2361,1199,2361,1199" alt="0079" title="0079" style="background-color:#FF6666;">
+
+   	 	   <area shape="poly" coords="1926,1133,2086,1125,2134,1219,1920,1237,1932,1131"alt="80" title="">
+
+   	 	   <area shape="poly" coords="2089,978,1895,776,1893,754,1887,724,1867,708,1861,710,1859,690,1857,682,1853,668,1841,658,1827,658,1825,652,1817,650,1821,606,3163,636,3143,652,3127,698,3119,730,3067,728,3059,720,3047,722,3033,726,3019,734,3009,744,2981,742,2975,738,2971,746,2965,760,2967,768,2957,784,2943,790,2931,780,2915,780,2915,788,2899,794,2895,782,2899,790,2889,786,2875,786,2863,768,2855,762,2855,758,2857,890,2897,928,2923,946,2973,964,2981,978,2735,1030,2735,1012,2721,1012,2721,982,2701,972,2693,972,2665,944,2601,924,2555,932,2553,944,2527,946,2509,942,2460,942,2402,932,2416,936,2400,940,2380,922,2340,916,2314,924,2292,938,2262,926,2258,922,2256,912,2244,908,2238,900,2236,906,2224,906,2210,898,2198,896,2192,912,2166,918,2162,928,2158,932,2136,954,2118,952,2104,960,2092,972,2082,972,1896,778,1892,752,1892,730,1862,710,1860,700,1850,682,1854,668,1844,660,1834,660,1820,652,1822,600,1856,656" href=""  alt="77" title="">
+	</map>
+	<canvas id='outline' width='360' height='225' style="position:fixed; top:10%;right:10%;background-image:url(imagen.png);background-size: 100% 100%;"></canvas>
+
+	<script type="text/javascript">
+	//var fracs = $("#mapdiv").fracs();
+		$('#outline').fracs('outline', {
+		    crop: true,
+		    
+		  
+		});
+		
+
+		$('area[alt="79"]').on('click', function(){$('#myModal').foundation('reveal', 'open'); })
+		
+		$( document ).ready(function() {
+		
+			var data = {};
+			var data2 = {};
+		    $('.map').maphilight();
+		    data.alwaysOn = true;
+		    data.fillColor = 'FF9933';
+		    data.fillOpacity = '.9';
+		    data2.alwaysOn = true;
+		    data2.fillColor = 'FF9933';
+		    data2.fillOpacity = '0.3';
+		    $('area[alt="79"]').data('maphilight', data).trigger('alwaysOn.maphilight');
+			
+			 $('area[alt="80"]').data('maphilight', data2).trigger('alwaysOn.maphilight');	
+			  $('area[alt="77"]').data('maphilight', data2).trigger('alwaysOn.maphilight');	
+		});
+	
+	</script>
+
+
+
+</body>
