@@ -22,18 +22,7 @@
 fill: #ff8533 !important;
   	
 }*/
-.info_panel 
-{
-  background-color: rgba(255,255,255, .7);
-  padding: .3em;
-  font-size: .8em;
-  font-family: Helvetica, Arial, sans-serif;
-  position: absolute;
-}
-.info_panel::first-line 
-{
-   font-weight: bold;   
-}
+
 
 g:hover 
 {
@@ -61,5 +50,17 @@ g:hover
 .textch{
 	fill: black !important;
 	font-size: 15 !important;
+}
+*.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
 }
 

@@ -1,4 +1,4 @@
-path:hover 
+.dis:hover 
 {
   fill: #ff8533 !important; 	  
 }
@@ -14,7 +14,10 @@ path:hover
    font-weight: bold;   
 }*/
 
-
+.textg{
+  fill: black !important;
+  font-size: 50 !important;
+}
 .text{
 	fill: black !important;
 	font-size: 20 !important;
@@ -29,3 +32,12 @@ path:hover
   font-size: 10 !important;
 }
 
+.textxg{
+  fill: black !important;
+  font-size: 80 !important;
+}
+
+.textmg{
+  fill: black !important;
+  font-size: 35 !important;
+}
