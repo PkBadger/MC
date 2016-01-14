@@ -1,8 +1,11 @@
 function modal(clicked_id)
 {
-    
-    document.getElementById("name").innerHTML = clicked_id;
-    $('#myModal').foundation('reveal','open');
+    var mapa = getUrlParameter('mapa');
+    if(mapa == "2")
+    {
+        window.location.href = "temp.html?svg="+clicked_id;
+    }else{
+    $('#myModal').foundation('reveal','open');}
 
 }
 function modals(clicked_id)

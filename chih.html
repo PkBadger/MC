@@ -9,9 +9,9 @@
       	<script src="JS/modal.js"></script>
 	</head>
 	<body>
-	<div class="off-canvas-wrap" data-offcanvas>
+    <div class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap">
-  
+    
     <nav class="tab-bar">
       <section class="left-small">
         <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
@@ -20,17 +20,22 @@
       <section class="middle tab-bar-section">
         <h1 class="title">Chihuahua</h1>
       </section>
+      <section class="right-small">
+        <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
+
+      
     </nav>
 
 
     <aside class="left-off-canvas-menu">
-   	<ul class="off-canvas-list">
+    <ul class="off-canvas-list">
         <li><label>Mapas</label></li>
         <li><a href="index.html">Mapa distrital</a></li>
     
     </ul>
       <ul class="off-canvas-list">
-         <li><label>Distritos</label></li>
+        <li><label>Distritos</label></li>
         <li><a href="Juarez.html">Juarez (9 distritos)</a></li>
         <li><a href="chih.html">Chihuahua (5 distritos)</a></li>
         <li><a href="dis1.html">Distrito 1</a></li>
@@ -44,6 +49,16 @@
       </ul>
     </aside>
 
+    <aside class="right-off-canvas-menu">
+    <ul class="off-canvas-list">
+        <li><label>Diputados</label></li>
+        <li><a onclick="$('#myModal').foundation('reveal','open');">Agregar Diputado</a></li>
+    
+    </ul>
+  
+        
+    </aside>
+
 
 
     <section class="main-section">
@@ -52,9 +67,9 @@
   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      viewBox="0 0 3000 2000" style="enable-background:new 0 0 3000 2000;" xml:space="preserve">
 <style type="text/css">
-    .st0{fill:#8FD4EB;stroke:#565656;stroke-width:7;}
+    .st0{fill:#cff;stroke:#565656;stroke-width:7;}
 </style>
-<path class="st0 dis" d="M1383.2,1235c-7.5,1.7-15.4,2.5-22.6,5.2c-17.5,6.6-31.1,19-44.1,32c-3.8,3.9-7.8,7.6-11.7,11.5
+<path class="st0 dis"id="dis12"onclick="show(this.id);"  d="M1383.2,1235c-7.5,1.7-15.4,2.5-22.6,5.2c-17.5,6.6-31.1,19-44.1,32c-3.8,3.9-7.8,7.6-11.7,11.5
     c-0.5,0.5-1,1.5-1.3,1.4c-5.5-1.9-12.4-2.6-16.1-6.3c-4.6-4.7-6.2-12.2-9.7-18.2c-3.9-6.8-8.6-13.1-12.5-19.9
     c-2.9-5.2-7-6.4-12.4-5.6c-5,0.7-10.1,1.5-15.1,1.9c-11.1,1-22.2,1.9-34.2,2.9c0.5-6.7,1.1-13.2,1.4-19.7c0.2-5.9-1.5-7.5-7.3-8
     c-1.3-0.1-2.7,0.1-4-0.2c-7.6-1.8-8.4-4.1-6.6-14.1c2.3-12.7,4-25.5,6-38.2c1.2-7.7,2.8-15.4,3.7-23.2c0.4-3,0.3-6.5-0.9-9.1
@@ -103,7 +118,7 @@
     c-8.2-8.4-10.6-19.7-14.9-30c-2-4.7-3-5.6-7.7-3.8c-13.4,5-26.7,10.3-40.2,15c-4.9,1.7-6.5,4.8-6.1,9.1c0.5,4.5-1.6,6.8-5.4,8.4
     c-3.4,1.4-6.9,2.6-10,4.5c-6.6,4-11.3,2.7-17.8-3.3c-5.1-4.7-10.3-9.4-15.4-14c0,0-0.3-0.3-0.3-0.3c-2.2-1.9-4.2-4.4-6.7-5.4
     c-8.2-3.2-16.6-1.6-24.8,0.4c-3.3,0.8-6.4,2-9.6,3C1386.3,1234.7,1384.8,1234.8,1383.2,1235z"/>
-<path class="st0 dis" d="M1647.5,1337c9.6,1,19.9,1.2,29.7,3.4c8.4,1.9,16.4,6.1,24.4,9.7c1.6,0.7,2.8,3.4,3.1,5.3
+<path class="st0 dis"id="dis18"onclick="show(this.id);"  d="M1647.5,1337c9.6,1,19.9,1.2,29.7,3.4c8.4,1.9,16.4,6.1,24.4,9.7c1.6,0.7,2.8,3.4,3.1,5.3
     c1.9,12.3,4.1,24.6,5.1,36.9c1.4,16.8,7.7,32.3,10.5,48.7c1.5,8.5,6.9,13.2,12.9,18.1c6.7,5.4,13.1,11,19.8,16.4
     c3.5,2.9,7.1,5.9,10.9,8.4c4.4,3,9.4,1.3,13-3.3c4.3-5.5,9-10.8,13.5-16.3c7.8,20.9,11.1,24.1,28.4,27.3
     c-4.7,11.1,1.8,23.6,11.7,28.2c12.3,5.7,24.9,10.9,37.4,16.3c1.7,0.7,3.8,1,5.7,1c13.8-0.2,27.5-0.5,41.3-1c3.1-0.1,4.7,1,6.1,3.7
@@ -125,7 +140,7 @@
     c3.6-19.1,7-38.3,10.7-57.4c0.4-2,1.5-4.1,2.6-5.9c9.9-15.4,19.3-31.2,30.1-45.9c4.6-6.3,4.8-11,2-17.4c-2.7-6.3-1.6-6.9,5.2-7.7
     c11.7-1.3,23.3-3,34.9-5.2c2.5-0.5,5.2-2.9,6.6-5.2c6.9-11.5,13.4-23.2,20-34.8c1.3-2.2,2.7-4.4,4.2-6.5c2.8-4,7-4.8,11.9-1.7
     c9.2,5.9,19,10.1,29.8,12.1c3.6,0.7,5.3,0.2,6.6-3.6C1641.6,1350.2,1644.7,1343.6,1647.5,1337z"/>
-<path class="st0 dis" d="M1429,1236.6c0,0,0.3,0.3,0.3,0.3c7.4,8.1,14.8,16.2,22,24.1c7.7-2.6,15.1-5,22.4-7.7
+<path class="st0 dis" onclick="show(this.id);" id="dis15"d="M1429,1236.6c0,0,0.3,0.3,0.3,0.3c7.4,8.1,14.8,16.2,22,24.1c7.7-2.6,15.1-5,22.4-7.7
     c10.4-3.9,8.1-3.3,7.7-13.1c-0.2-4.1,1.7-5.4,4.5-6.4c7.9-2.7,16-5,23.9-7.8c5.2-1.8,10.3-4,15.9-6.2c1.4,3.2,3.3,6.2,4,9.4
     c2.4,10.8,9.8,18.6,16.4,26.6c6.7,8.1,14.4,15.4,22.2,22.5c3.1,2.8,7.8,3.6,11.4,5.9c3.4,2.2,6.7,4.8,9.4,7.8
     c2.3,2.6,1.1,5.4-1.5,7.8c-1.3,1.2-2.8,3.3-2.6,4.9c1.3,13-0.2,26.3,4.5,39c0.6,1.5,0.2,3.8-0.6,5.2c-7.8,12.9-15.8,25.7-23.7,38.6
@@ -139,7 +154,7 @@
     c-9.3-6.2-11.2-1.8-16.5,4.2c-8.5,9.6-17.2,19.1-25.5,28.2c-2.1-0.8-3.6-1.6-5.1-1.8c-5.2-0.7-8-5.7-4.4-9.3
     c13.3-13.2,23.2-30.2,41.8-37.8c9.2-3.8,17.5-9.6,28-9.6c1.5,0,2.9-1.8,4.4-2.8c1.6-0.1,3.2-0.3,4.8-0.4c2.1-0.3,4.3-0.5,6.3-0.9
     C1406.2,1231.1,1418,1229.6,1429,1236.6z"/>
-<path class="st0 dis" d="M1574.9,1233c7.3,0,13.6-0.4,19.9,0.1c6.7,0.5,9.2-3.5,8.1-9.7c-1-5.8-2.5-11.4-3.9-17.1c-0.3-1-1.2-1.9-1.4-3
+<path class="st0 dis"id="dis17"onclick="show(this.id);"  d="M1574.9,1233c7.3,0,13.6-0.4,19.9,0.1c6.7,0.5,9.2-3.5,8.1-9.7c-1-5.8-2.5-11.4-3.9-17.1c-0.3-1-1.2-1.9-1.4-3
     c-0.6-2.3-1.9-5-1.1-6.7c0.9-1.7,3.8-3.1,6-3.4c5.4-0.7,10.9-0.9,16.4-1.1c19.8-0.7,39.6-1.4,59.3-2.1c4.2-0.2,8.3-0.7,12.4-0.9
     c4-0.2,7.1,1.5,7.2,5.8c0.1,4.3-3,6.2-7,6c-3-0.1-5.2,1-5.5,3.7c-0.2,1.7,1,4.7,2.4,5.4c9.3,4.4,15.5,12,22.2,19.3
     c1.4,1.6,4.2,2.5,6.4,2.6c6.6,0.3,13.3,0.1,20.2,0.1c2.7,16.7,5.4,33.3,7.9,48.4c-3.9,5.3-7.3,9.7-10.2,14.2
@@ -147,7 +162,7 @@
     c-12.5-3.3-25-6.2-37.6-9.2c-3.2-0.7-6.4-1.2-9.7-1.4c-2.7-0.2-3.5-1.3-3-3.9c0.6-2.8,1-5.6,1.6-9c-8.7-5-17.6-10.1-26.4-15.3
     c-6.9-4.1-13.5-8.2-22.2-7.2c-3.8,0.5-6.5-1.8-6.9-6.3c-0.1-1.3-1.1-2.7-2-3.6c-1.4-1.4-3.2-2.3-4.9-3.5c-7.7-5.6-7.7-7.1-4.1-15.8
     c1.3-3.1,1-7.5,0.2-10.9C1580.5,1250.2,1577.7,1241.9,1574.9,1233z"/>
-<path class="st0 dis" d="M1646.6,1321.8c-2.4,11.1-3.9,22.1-10.2,31.8c-2.5,3.8-4.5,5.6-8.8,3.5c-6.4-3.2-12.8-6.3-19.3-9.2
+<path class="st0 dis"id="dis16"onclick="show(this.id);" d="M1646.6,1321.8c-2.4,11.1-3.9,22.1-10.2,31.8c-2.5,3.8-4.5,5.6-8.8,3.5c-6.4-3.2-12.8-6.3-19.3-9.2
     c-3.8-1.7-8-2.7-11.5-4.8c-2.4-1.4-5.3-4.1-5.6-6.5c-1-7.5-0.8-15.1-1.1-22.7c-0.1-3.3-0.3-6.5-0.5-10.7c10.2,1.2,20.8-2.7,31,4.5
     C1628.5,1313.2,1637.8,1317.1,1646.6,1321.8z"/>
     <text x="1215" y="567" fill="black" class="textxg">Distrito 12</text>
@@ -155,6 +170,12 @@
     <text x="1375" y="1367" fill="black" class="textmg"x>Distrito 15</text>
     <text x="1585" y="1267" fill="black" class="textmg"x>Distrito 17</text>
     <text x="1595" y="1337" fill="black" class="textmg"x>Distrito 16</text>
+    <rect x="1000" y="100" width="20" height="20" style="fill:#f88d1e;stroke:#000000;stroke-width:1;stroke-opacity:0.9" />
+    <text x="1030" y="115" fill="black" class="text">Diputado Masculino</text>
+    <rect x="1000" y="130" width="20" height="20" style="fill:#fb98b0;stroke:#000000;stroke-width:1;stroke-opacity:0.9" />
+    <text x="1030" y="145" fill="black" class="text">Diputada Femenina</text>
+    <rect x="1000" y="160" width="20" height="20" style="fill:#ccffff;stroke:#000000;stroke-width:1;stroke-opacity:0.9" />
+    <text x="1030" y="175" fill="black" class="text">Faltan Datos</text>
 </svg>
 
 
@@ -175,11 +196,91 @@
       $(document).foundation();
     </script>
         <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-          <h2 id="name"></h2>
-          <p class="lead">Información</p>
-          <p>Más información</p>
+          <h2 id="name">Agregar Diputado</h2>
+          <form id="myForm" method="post" >
+           <div class="row">
+                <div class="small-4 columns">
+                  <label>Nombre
+                    <input type="text" name="name"  />
+                  </label>
+                </div>
+                <div class="small-4 columns">
+                  <label>Apellido Paterno
+                    <input type="text" name="fLastname"/>
+                  </label>
+                </div>
+                <div class="small-4 columns">
+                  <label>Apellido Materno
+                    <input type="text" name="mLastname" />
+                  </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-4 columns">
+                  <label>Distrito
+                    <input type="number" name="distrito" min="1" max="22">
+                    
+                  </label>
+                </div>
+                <div class="small-4 columns">
+                  <label>E-mail
+                    <input type="email" name="mail">                    
+                  </label>
+                </div>
+                <div class="small-4 columns">
+                  <label># de telefono
+                    <input type="number" name="cel">                    
+                  </label>
+                </div>
+             </div>
+             <div class="row">
+                <div class="small-6 columns">
+                  <label>Cargo</label>
+                  <input type="radio" name="cargo" value="propietario" id="propietario"><label for="Propietario">Propietario</label>
+                  <input type="radio" name="cargo" value="suplente" id="suplente"><label for="Suplente">Suplente</label>
+                </div>
+                <div class="small-6 columns">
+                  <label>Sexo</label>
+                  <input type="radio" name="sexo" value="F" id="femenino"><label for="femenino">Femenino</label>
+                  <input type="radio" name="sexo" value="M" id="masculino"><label for="masculino">Masculino</label>
+                </div>
+            </div>
+                
+            
+            <div class="small-6 columns small-offset-3 columns">
+                <input type="button" onclick="subir();" id="submit" value="Guardar" class="button"style="width:100%;" >
+            </div>
+        </form>
+        
           <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+         
         </div>
+
+        <div id="Modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <h2 id="nombre"></h2>
+            <table>
+              <thead>
+                <tr>
+                  <th width="150">Nombre</th>
+                  <th width="150">Cargo</th>
+                  <th width="150">Telefono</th>
+                  <th width="150">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="propietariom">   
+                </tr>
+                <tr id="suplentem">
+                </tr>
+              </tbody>
+            </table>
+
+        
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+         
+        </div>
+
+        <script src="JS/getCandidatos.js"></script>
 	</body>
 
 

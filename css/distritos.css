@@ -1,4 +1,4 @@
-path:hover 
+path:hover, polyline:hover 
 {
   fill: #ff8533 !important; 	  
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 2500 1500" style="enable-background:new 0 0 2500 1500;" xml:space="preserve">
+<svg version="1.1" id="Layer1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 2500 1500" style="enable-background:new 0 0 2500 1500;overflow: hidden; display: inline; width: inherit; min-width: inherit; max-width: inherit; height: inherit; min-height: inherit; max-height: inherit;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#FFFFFF;}
+	.st0{fill:#8FD4EB;stroke:#000000;stroke-width:1;}
 </style>
 <g>
 	<path onclick="modals(this.id);" id="1059" class="st0" d="M1395.4,571.6c-1.1,2.1-2.6,4-3.3,6.2c-1.5,5.1-2.6,10.4-3.9,15.6c-0.7,2.8-0.1,4.8,3.2,4.5

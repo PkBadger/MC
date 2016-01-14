@@ -26,10 +26,12 @@ fill: #ff8533 !important;
 
 g:hover 
 {
-  fill: #ff8533 !important;
+  fill:  rgba(255,178,128,1) !important;
+
   cursor: pointer;
   	  
 }
+
 
 /*	.info_panel {
   background-color: rgba(255,255,255, .7);

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html>
+	<head>
+		<link rel="stylesheet" href="foundation/css/foundation.css" />
+		<link rel="stylesheet" href="css/distritos.css" />
+		<link rel="stylesheet" href="css/styles.css" />
+	    <script src="foundation/js/vendor/modernizr.js"></script>
+	    <script src="foundation/js/vendor/jquery.js"></script>
+	    <script src="foundation/js/foundation.min.js"></script>
+		<script src="JS/modal.js"></script>
+		<script src="JS/getparam.js"></script>
+		
+	</head>
+	<body>
+	<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+  
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
+
+      <section class="middle tab-bar-section">
+        <h1 class="title" id="nom"></h1>
+      </section>
+    </nav>
+
+
+    <aside class="left-off-canvas-menu">
+   	<ul class="off-canvas-list">
+        <li><label>Mapas</label></li>
+        <li><a href="index.html">Mapa distrital</a></li>
+    
+    </ul>
+      <ul class="off-canvas-list">
+         <li><label>Distritos</label></li>
+         <li><a href="Juarez.html">Juarez (9 distritos)</a></li>
+        <li><a href="chih.html">Chihuahua (5 distritos)</a></li>
+        <li><a href="dis1.html">Distrito 1</a></li>
+        <li><a href="dis11.html">Distrito 11</a></li>
+        <li><a href="dis13.html">Distrito 13</a></li>
+        <li><a href="dis14.html">Distrito 14</a></li>
+ 		<li><a href="dis19.html">Distrito 19</a></li>  
+ 		<li><a href="dis20.html">Distrito 20</a></li>
+ 		<li><a href="dis21.html">Distrito 21</a></li>
+ 		<li><a href="dis22.html">Distrito 22</a></li>
+      </ul>
+    </aside>
+
+
+
+    <section class="main-section">
+    	
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<div id="container" style="width: 100vw; height: 90vh;">
+	<img class="inject-me" >
+</div>
+
+ </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
+</div>
+<script type="text/javascript">
+			var svg = getUrlParameter('svg');
+			
+			document.getElementById("nom").innerHTML = svg;
+			$(".inject-me").attr("src","Imagenes/"+svg+".svg");
+		</script>
+  <script src="JS/svg-pan-zoom.min.js"></script>
+ 
+  <script src="JS/svg-injector.min.js"></script>
+  <script type="text/javascript">
+   var mySVGsToInject = document.querySelectorAll('img.inject-me');
+
+  // Do the injection
+  SVGInjector(mySVGsToInject);
+	SVGInjector(mySVGsToInject, null, function (count) {
+	  // Callback after all SVGs are injected
+	  	 
+	  	
+	     window.setTimeout(zoo,1000);
+
+		
+	});
+	
+
+	function zoo(){
+		 var panZoomTiger = svgPanZoom('#Layer1', {
+		  controlIconsEnabled: true});
+		 box();
+	}
+  </script>
+  <script>
+      $(document).foundation();
+    </script>
+     <script src="JS/box.js"></script>
+    	<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		  <h2 id="name"></h2>
+		  <p class="lead">Información</p>
+		  <p>Más información</p>
+		  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		</div>
+	</body>
+	
+
+
+</html>
