@@ -67,27 +67,35 @@ function choose(id,link){
   show(id);
 }
 
+function chooseD(id){
+  $("#mapa").attr("onclick","window.location.href ='temp.html?svg="+id +"'");
+  show(id);
+}
+
+
 function show(id){
-  $("#nombre").html(id);
-  $("#suplentem").html("");
-  $("#propietariom").html("");
-  id = id.replace('dis','');
+
   
-  for(keys in json)
-  {
-      if(json[keys].district == id)
-      {
-        var string = "<td>" + json[keys].name +" " +json[keys].flastname + " " +json[keys].mlastname +"</td><td>"+json[keys].cargo+"</td><td>"+json[keys].cel+"</td><td>"+json[keys].email+"<td>"
-        if(json[keys].cargo =="propietario")
+    $("#nombre").html(id);
+    $("#suplentem").html("");
+    $("#propietariom").html("");
+    id = id.replace('dis','');
+    
+    for(keys in json)
+    {
+        if(json[keys].district == id)
         {
-          $("#propietariom").html(string);
-        }else{
-          $("#suplentem").html(string);
+          var string = "<td>" + json[keys].name +" " +json[keys].flastname + " " +json[keys].mlastname +"</td><td>"+json[keys].cargo+"</td><td>"+json[keys].cel+"</td><td>"+json[keys].email+"<td>"
+          if(json[keys].cargo =="propietario")
+          {
+            $("#propietariom").html(string);
+          }else{
+            $("#suplentem").html(string);
+          }
         }
-      }
-  }
-  $('#Modal').foundation('reveal','open');
-  
+    }
+    $('#Modal').foundation('reveal','open');
+    
 }
 function statics(){
     var numM=0;

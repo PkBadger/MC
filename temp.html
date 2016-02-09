@@ -23,30 +23,29 @@
       <section class="middle tab-bar-section">
         <h1 class="title" id="nom"></h1>
       </section>
+      <section class="right-small">
+        <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
     </nav>
 
 
     <aside class="left-off-canvas-menu">
    	<ul class="off-canvas-list">
         <li><label>Mapas</label></li>
-        <li><a href="index.html">Mapa distrital</a></li>
+        <li><a href="index.html">Mapa General</a></li>
+        <li><a href="index.html?mapa=2">Estructura de votos</a></li>
     
     </ul>
-      <ul class="off-canvas-list">
-         <li><label>Distritos</label></li>
-         <li><a href="Juarez.html">Juarez (9 distritos)</a></li>
-        <li><a href="chih.html">Chihuahua (5 distritos)</a></li>
-        <li><a href="dis1.html">Distrito 1</a></li>
-        <li><a href="dis11.html">Distrito 11</a></li>
-        <li><a href="dis13.html">Distrito 13</a></li>
-        <li><a href="dis14.html">Distrito 14</a></li>
- 		<li><a href="dis19.html">Distrito 19</a></li>  
- 		<li><a href="dis20.html">Distrito 20</a></li>
- 		<li><a href="dis21.html">Distrito 21</a></li>
- 		<li><a href="dis22.html">Distrito 22</a></li>
-      </ul>
     </aside>
-
+    <aside class="right-off-canvas-menu">
+      <ul class="off-canvas-list">
+          <li><label>Promotores</label></li>
+          <li><a onclick="agregar('promotor')">Agregar Promotores</a></li>
+          <li><label>Simpatizantes</label></li>
+          <li><a onclick="agregar('simpatizante')">Agregar Simpatizantes</a></li>
+      </ul>
+             
+    </aside>
 
 
     <section class="main-section">
@@ -91,17 +90,102 @@
 		  controlIconsEnabled: true});
 		 box();
 	}
+   var json;
+
+ $.getJSON("http://encuentro-sam23d.rhcloud.com/api/promotores?municipio=" + svg,
+        {
+          action: "query",
+          list: "search"
+          
+        },
+        function(data) {
+           
+            json=data;
+            
+
+        });
   </script>
   <script>
       $(document).foundation();
-    </script>
+  </script>
      <script src="JS/box.js"></script>
     	<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-		  <h2 id="name"></h2>
-		  <p class="lead">Información</p>
-		  <p>Más información</p>
-		  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-		</div>
+  		  <h2>Seccion:</h2>
+        <h2 id="name"></h2>
+  		  
+        <h5> Promotores </h5>
+  		  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        <table id="table1"></table>
+        <h5> Simpatizantes </h5>
+        <table id="table2"></table>
+		  </div>
+      <div id="modalAgregar" class="reveal-modal" data-reveal aria-laballedby="Agregar" aria-hidden="true" role="dialog">
+        <h3 id="nameA"><h3>
+          <form id="forma" methon="post">
+            <div class="row">
+              <div class="small-4 columns">
+                <label>Nombre
+                  <input type="text" name="name"  />
+                </label>
+              </div>
+              <div class="small-4 columns">
+                <label>Apellido Paterno
+                  <input type="text" name="fLastname"/>
+                </label>
+            </div>
+            <div class="small-4 columns">
+                <label>Apellido Materno
+                  <input type="text" name="mLastname" />
+                </label>
+            </div>
+          </div>
+          <div class="row">
+              <div class="small-4 columns">
+                <label>Seccion
+                  <input type="number" name="seccion" min="1">
+                
+                </label>
+            </div>
+              <div class="small-4 columns">
+                <label>E-mail
+                  <input type="email" name="correo">            
+                </label>
+            </div>
+            <div class="small-4 columns">
+                <label># de telefono
+                  <input type="number" name="celular">            
+                </label>
+            </div>
+           </div>
+           <div class="row">
+              <div class="small-6 columns">
+                <label>Domicilio
+                  <input type="text" name="domicilio"  />
+                </label>
+              </div>
+              <div class="small-6 columns">
+                <label>Municipio
+                  <input type="text" name="municipio" id="mun" readonly />
+                </label>
+              </div>
+          </div>
+          <div class="row">
+              
+              <div class="small-6 columns">
+                <label>Sexo</label>
+                <input type="radio" name="sexo" value="F" id="femenino"><label for="femenino">Femenino</label>
+                <input type="radio" name="sexo" value="M" id="masculino"><label for="masculino">Masculino</label>
+              </div>
+              <div class="small-6 columns" id="tipo">
+                
+              </div>
+          </div>
+          <div class="small-6 columns small-offset-3 columns">
+            <input type="button" id="submit" value="Guardar" class="button"style="width:100%;" >
+          </div>
+
+          </form>
+      </div>
 	</body>
 	
 
