@@ -6,8 +6,9 @@
 	    <script src="foundation/js/vendor/modernizr.js"></script>
 	    <script src="foundation/js/vendor/jquery.js"></script>
 	    <script src="foundation/js/foundation.min.js"></script>
-		<script src="JS/modal.js"></script>
+		
 		<script src="JS/getparam.js"></script>
+
 	</head>
 	<body>
 	<div class="off-canvas-wrap" data-offcanvas>
@@ -27,22 +28,13 @@
     <aside class="left-off-canvas-menu">
    	<ul class="off-canvas-list">
         <li><label>Mapas</label></li>
-        <li><a href="index.html">Mapa distrital</a></li>
+        <li><a href="index.html" >Mapa distrital</a></li>
+        <li><a href="index.html?mapa=2" style="background-color:#107896;">Estructura de votos</a></li>
+        <li><a href="index.html?mapa=3" style = "background-color:#829356;">Mapa de colores</a></li>
+        <li><a href="index.html?mapa=4" style = "background-color:#C2571A;:">Casillas</a></li>
+
     
     </ul>
-      <ul class="off-canvas-list">
-         <li><label>Distritos</label></li>
-         <li><a href="Juarez.html">Juarez (9 distritos)</a></li>
-        <li><a href="chih.html">Chihuahua (5 distritos)</a></li>
-        <li><a href="dis1.html">Distrito 1</a></li>
-        <li><a href="dis11.html">Distrito 11</a></li>
-        <li><a href="dis13.html">Distrito 13</a></li>
-        <li><a href="dis14.html">Distrito 14</a></li>
- 		<li><a href="dis19.html">Distrito 19</a></li>  
- 		<li><a href="dis20.html">Distrito 20</a></li>
- 		<li><a href="dis21.html">Distrito 21</a></li>
- 		<li><a href="dis22.html">Distrito 22</a></li>
-      </ul>
     </aside>
 
 
@@ -220,7 +212,7 @@
 		l0.7-8.2l-9.3-2.7v-5.9l-5.9-2.3l-5.1,3.9l-4.7-7.1l-16.8,7.5l2.4-6.3l-10.2,5.1l-0.5-0.5c0,0.5,0.2,1,0,1.5
 		c-0.2,0.8-0.5,1.5-0.4,2.2c0.3,1.2,1.5,2.8,1.9,4.1c0.5,2.1,0.5,3.2,1.1,4.5c0.8,1.7,2.4,2.8,3.4,4.5c0.1,0.2,0.2,0.5,0,0.7
 		s-0.3,0.5-0.6,0.7c-0.5,0.4-1.3,0.8-1.7,1.2c0,0,2.8,3.1,3,3.4c0.6,0.8,0.8,1.2,0.7,1.5C464.6,213.2,464.3,213.2,463.9,213.3z"/>
-	<path id="Ascencion" class="st0" onclick="modal(this.id);" d="M457.2,188.5l0.5,0.5l10.2-5.1l-2.4,6.3l16.8-7.5l4.7,7.1l5.1-3.9l5.9,2.3v5.9l9.3,2.7l-0.7,8.2
+	<path id="Ascension" class="st0" onclick="modal(this.id);" d="M457.2,188.5l0.5,0.5l10.2-5.1l-2.4,6.3l16.8-7.5l4.7,7.1l5.1-3.9l5.9,2.3v5.9l9.3,2.7l-0.7,8.2
 		l14.8-11.3v3.1h16.4l5.1-10.5l7.8,1.1c0,0.1,1,1.8,1.2,2.4c0.4,1.7,1.1,2.6,1.6,4.3c0,0.1,0.7,1.3,1.4,2.3c0.4,0.5,0.8,1,1.2,1.3
 		c0.4,0.3,0.7,0.5,0.9,0.3c1-1,1.9-1.5,3.1-2.7c0.7-0.7,0.9-1.3,0.9-1.9s0-1.4,0.3-2.8c0.1-0.5,0.9-1.3,1.8-1.8
 		c0.5-0.2,1-0.4,1.5-0.4s1,0.2,1.4,0.6c0.5,0.5,0.8,1.8,1,2.9c0.2,1,0.4,1.7,0.5,1.1c0.4-1.7,1.1-2.4,1.6-4.3
@@ -275,13 +267,193 @@
   <script>
       $(document).foundation();
     </script>
+    <script type="text/javascript">
+    	var municipios = ["Janos","Galeana","Ascension","NCasasGrandes","Casasgrandes","Madera","GomezFarias","Ignaciozaragoza"];
+    </script>
+    <script src="JS/modal.js"></script>
 	</body>
 		<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
 		  <h2 id="name"></h2>
 		  <p class="lead">Información</p>
-		  <p>Más información</p>
+		  <div id="ModalBorrable">
+
+		  </div>
+		  <div>
+		  	<table id ="tableRegidores">
+		  	</table>
+		  	<div class="row">
+		  		<div class="small-6 columns" >
+		  			<button class="button" id="CrearP"style="width:100%;" onclick="modalAyuntamientos($('#name').html())">Crear Planilla</button>
+		  		</div>
+		  		<div class="small-6 columns">
+		  			<button style="width:100%;"id="CrearR" class="button" onclick="modalRegidores($('#name').html())">Agregar Regidores</button>
+		  		</div>
+		  	</div>
+		  </div>
 		  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 		</div>
+
+		<div id="modalCrearR" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		  <h2>Crear Regidor</h2>
+		  <div class="row">
+			  	<form id="forma" method="post">
+	            <div class="row">
+	              <div class="small-4 columns">
+	                <label>Nombre
+	                  <input type="text" name="name"  />
+	                </label>
+	              </div>
+	              <div class="small-4 columns">
+	                <label>Apellido Paterno
+	                  <input type="text" name="fLastname"/>
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label>Apellido Materno
+	                  <input type="text" name="mLastname" />
+	                </label>
+	            </div>
+	          </div>
+	          <div class="row">
+	              <div class="small-4 columns">
+	                <label>Municipio
+	                  <input type="text" name="ayuntamiento_id" readonly id="mun">
+	                
+	                </label>
+	            </div>
+	              <div class="small-4 columns">
+	                <label>E-mail
+	                  <input type="email" name="mail">            
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label># de telefono
+	                  <input type="number" name="cel">            
+	                </label>
+	            </div>
+	           </div>
+	           
+	          <div class="row">
+	              
+	              <div class="small-6 columns">
+	                <label>Sexo</label>
+	                <input type="radio" name="sexo" value="F" id="femenino"><label for="femenino">Femenino</label>
+	                <input type="radio" name="sexo" value="M" id="masculino"><label for="masculino">Masculino</label>
+	              </div>
+	              <div class="small-6 columns" id="tipo">
+	                
+	              </div>
+	          </div>
+	          <div class="small-6 columns small-offset-3 columns">
+	            <input type="button" onclick="saveRegidor();" id="submit" value="Guardar" class="button"style="width:100%;" >
+	          </div>
+
+	          </form>
+
+		  </div>
+		  
+		  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		</div>
+		<div id="modalCrearA" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		  <h2 id="Ayuntamiento"></h2>
+		  <h2>Crear Planilla</h2>
+		  <h4>Presidente</h4>
+		  <div class="row">
+			  	<form id="forma1" method="post">
+	            <div class="row">
+	              <div class="small-4 columns">
+	                <label>Nombre
+	                  <input type="text" name="name"  />
+	                </label>
+	              </div>
+	              <div class="small-4 columns">
+	                <label>Apellido Paterno
+	                  <input type="text" name="fLastname"/>
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label>Apellido Materno
+	                  <input type="text" name="mLastname" />
+	                </label>
+	            </div>
+	          </div>
+	          <div class="row">
+	              
+	              <div class="small-4 columns">
+	                <label>E-mail
+	                  <input type="email" name="mail">            
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label># de telefono
+	                  <input type="number" name="cel">            
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label>Sexo</label>
+	                <input type="radio" name="sexo" value="F" id="femenino"><label for="femenino">Femenino</label>
+	                <input type="radio" name="sexo" value="M" id="masculino"><label for="masculino">Masculino</label>
+	              </div>
+	           </div>
+	       </form>
+	            <h4>Sindico</h4>
+		  
+			  	<form id="forma2" method="post">
+	            <div class="row">
+	              <div class="small-4 columns">
+	                <label>Nombre
+	                  <input type="text" name="name"  />
+	                </label>
+	              </div>
+	              <div class="small-4 columns">
+	                <label>Apellido Paterno
+	                  <input type="text" name="fLastname"/>
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label>Apellido Materno
+	                  <input type="text" name="mLastname" />
+	                </label>
+	            </div>
+	          </div>
+	          <div class="row">
+	              
+	              <div class="small-4 columns">
+	                <label>E-mail
+	                  <input type="email" name="mail">            
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label># de telefono
+	                  <input type="number" name="cel">            
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label>Sexo</label>
+	                <input type="radio" name="sexo" value="F" id="femenino"><label for="femenino">Femenino</label>
+	                <input type="radio" name="sexo" value="M" id="masculino"><label for="masculino">Masculino</label>
+	              </div>
+	           </div>
+	           
+	          <div class="row">
+	              
+	              
+	              <div class="small-6 columns" id="tipo">
+	                
+	              </div>
+	          </div>
+	          
+
+	          </form>
+	          <div class="small-6 columns small-offset-3 columns">
+	            <input type="button" onclick="savePresident();" id="submit" value="Guardar" class="button"style="width:100%;" >
+	          </div>
+
+		  </div>
+		  
+		  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		</div>
+
 
 
 </html>

@@ -1,5 +1,17 @@
  var json;
 
+ if(mapa == 2){
+   $(".tab-bar").css("background-color","#107896");
+ }else if(mapa==3)
+ {
+   $(".tab-bar").css("background-color","#829356");
+ }else if(mapa==4){
+    $(".tab-bar").css("background-color","#C2571A");
+ }
+
+ 
+
+
  $.getJSON("http://encuentro-sam23d.rhcloud.com/api/candidatos",
         {
           action: "query",
@@ -68,7 +80,7 @@ function choose(id,link){
 }
 
 function chooseD(id){
-  $("#mapa").attr("onclick","window.location.href ='temp.html?svg="+id +"'");
+  $("#mapa").attr("onclick","window.location.href ='temp.html?svg="+id +"&mapa="+ mapa +"'");
   show(id);
 }
 

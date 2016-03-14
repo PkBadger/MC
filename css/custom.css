@@ -26,7 +26,7 @@ fill: #ff8533 !important;
 
 g:hover 
 {
-  fill:  rgba(255,178,128,1) !important;
+  fill:  rgba(255,178,128,.9) !important;
 
   cursor: pointer;
   	  
@@ -43,6 +43,8 @@ g:hover
 .info_panel::first-line {
    font-weight: bold;   
 }*/
+
+
 
 .text{
 	fill: black !important;

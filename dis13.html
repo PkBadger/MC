@@ -6,7 +6,7 @@
     <script src="foundation/js/vendor/modernizr.js"></script>
     <script src="foundation/js/vendor/jquery.js"></script>
      <script src="foundation/js/foundation.min.js"></script>
-	 <script src="JS/modal.js"></script>	     
+	 	     
 	 <script src="JS/getparam.js"></script>
 
 
@@ -29,23 +29,13 @@
     <aside class="left-off-canvas-menu">
    	<ul class="off-canvas-list">
         <li><label>Mapas</label></li>
-        <li><a href="index.html">Mapa distrital</a></li>
+        <li><a href="index.html" >Mapa distrital</a></li>
+        <li><a href="index.html?mapa=2" style="background-color:#107896;">Estructura de votos</a></li>
+        <li><a href="index.html?mapa=3" style = "background-color:#829356;">Mapa de colores</a></li>
+        <li><a href="index.html?mapa=4" style = "background-color:#C2571A;:">Casillas</a></li>
+
     
     </ul>
-      <ul class="off-canvas-list">
-         <li><label>Distritos</label></li>
-         <li><a href="Juarez.html">Juarez (9 distritos)</a></li>
-        <li><a href="chih.html">Chihuahua (5 distritos)</a></li>
-        <li><a href="dis1.html">Distrito 1</a></li>
-        <li><a href="dis11.html">Distrito 11</a></li>
-        <li><a href="dis13.html">Distrito 13</a></li>
-        <li><a href="dis14.html">Distrito 14</a></li>
- 		<li><a href="dis19.html">Distrito 19</a></li>  
- 		<li><a href="dis20.html">Distrito 20</a></li>
- 		<li><a href="dis21.html">Distrito 21</a></li>
- 		<li><a href="dis22.html">Distrito 22</a></li>
-     
-      </ul>
     </aside>
 
 
@@ -404,15 +394,197 @@
 
   </div>
 </div>
+<script type="text/javascript">
+    	var municipios = ["Moris","Uruachi","Chinipas","Guazapares","Maguarichi","Bocoyna","Guerrero","Matachi","Bachiniva","Namiquipa","Ocampo","Temosachic","Cusihuiriachi"];
+    </script>
+ <script src="JS/modal.js"></script>
 <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <h2 id="name"></h2>
-  <p class="lead">Información</p>
-  <p>Más información</p>
-  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-</div>
+		  <h2 id="name"></h2>
+		  <p class="lead">Información</p>
+		  <div id="ModalBorrable">
+
+		  </div>
+		  <div>
+		  	<table id ="tableRegidores">
+		  	</table>
+		  	<div class="row">
+		  		<div class="small-6 columns" >
+		  			<button class="button" id="CrearP"style="width:100%;" onclick="modalAyuntamientos($('#name').html())">Crear Planilla</button>
+		  		</div>
+		  		<div class="small-6 columns">
+		  			<button style="width:100%;"id="CrearR" class="button" onclick="modalRegidores($('#name').html())">Agregar Regidores</button>
+		  		</div>
+		  	</div>
+		  </div>
+		  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		</div>
+
+		<div id="modalCrearR" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		  <h2>Crear Regidor</h2>
+		  <div class="row">
+			  	<form id="forma" method="post">
+	            <div class="row">
+	              <div class="small-4 columns">
+	                <label>Nombre
+	                  <input type="text" name="name"  />
+	                </label>
+	              </div>
+	              <div class="small-4 columns">
+	                <label>Apellido Paterno
+	                  <input type="text" name="fLastname"/>
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label>Apellido Materno
+	                  <input type="text" name="mLastname" />
+	                </label>
+	            </div>
+	          </div>
+	          <div class="row">
+	              <div class="small-4 columns">
+	                <label>Municipio
+	                  <input type="text" name="ayuntamiento_id" readonly id="mun">
+	                
+	                </label>
+	            </div>
+	              <div class="small-4 columns">
+	                <label>E-mail
+	                  <input type="email" name="mail">            
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label># de telefono
+	                  <input type="number" name="cel">            
+	                </label>
+	            </div>
+	           </div>
+	           
+	          <div class="row">
+	              
+	              <div class="small-6 columns">
+	                <label>Sexo</label>
+	                <input type="radio" name="sexo" value="F" id="femenino"><label for="femenino">Femenino</label>
+	                <input type="radio" name="sexo" value="M" id="masculino"><label for="masculino">Masculino</label>
+	              </div>
+	              <div class="small-6 columns" id="tipo">
+	                
+	              </div>
+	          </div>
+	          <div class="small-6 columns small-offset-3 columns">
+	            <input type="button" onclick="saveRegidor();" id="submit" value="Guardar" class="button"style="width:100%;" >
+	          </div>
+
+	          </form>
+
+		  </div>
+		  
+		  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		</div>
+		<div id="modalCrearA" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		  <h2 id="Ayuntamiento"></h2>
+		  <h2>Crear Planilla</h2>
+		  <h4>Presidente</h4>
+		  <div class="row">
+			  	<form id="forma1" method="post">
+	            <div class="row">
+	              <div class="small-4 columns">
+	                <label>Nombre
+	                  <input type="text" name="name"  />
+	                </label>
+	              </div>
+	              <div class="small-4 columns">
+	                <label>Apellido Paterno
+	                  <input type="text" name="fLastname"/>
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label>Apellido Materno
+	                  <input type="text" name="mLastname" />
+	                </label>
+	            </div>
+	          </div>
+	          <div class="row">
+	              
+	              <div class="small-4 columns">
+	                <label>E-mail
+	                  <input type="email" name="mail">            
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label># de telefono
+	                  <input type="number" name="cel">            
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label>Sexo</label>
+	                <input type="radio" name="sexo" value="F" id="femenino"><label for="femenino">Femenino</label>
+	                <input type="radio" name="sexo" value="M" id="masculino"><label for="masculino">Masculino</label>
+	              </div>
+	           </div>
+	       </form>
+	            <h4>Sindico</h4>
+		  
+			  	<form id="forma2" method="post">
+	            <div class="row">
+	              <div class="small-4 columns">
+	                <label>Nombre
+	                  <input type="text" name="name"  />
+	                </label>
+	              </div>
+	              <div class="small-4 columns">
+	                <label>Apellido Paterno
+	                  <input type="text" name="fLastname"/>
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label>Apellido Materno
+	                  <input type="text" name="mLastname" />
+	                </label>
+	            </div>
+	          </div>
+	          <div class="row">
+	              
+	              <div class="small-4 columns">
+	                <label>E-mail
+	                  <input type="email" name="mail">            
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label># de telefono
+	                  <input type="number" name="cel">            
+	                </label>
+	            </div>
+	            <div class="small-4 columns">
+	                <label>Sexo</label>
+	                <input type="radio" name="sexo" value="F" id="femenino"><label for="femenino">Femenino</label>
+	                <input type="radio" name="sexo" value="M" id="masculino"><label for="masculino">Masculino</label>
+	              </div>
+	           </div>
+	           
+	          <div class="row">
+	              
+	              
+	              <div class="small-6 columns" id="tipo">
+	                
+	              </div>
+	          </div>
+	          
+
+	          </form>
+	          <div class="small-6 columns small-offset-3 columns">
+	            <input type="button" onclick="savePresident();" id="submit" value="Guardar" class="button"style="width:100%;" >
+	          </div>
+
+		  </div>
+		  
+		  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		</div>
+
   <script>
       $(document).foundation();
     </script>
+   
+
 	</body>
 
 
