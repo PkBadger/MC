@@ -7,11 +7,13 @@
    $(".tab-bar").css("background-color","#829356");
  }else if(mapa==4){
     $(".tab-bar").css("background-color","#C2571A");
+ }else{
+  jsonDiputados()
  }
 
  
 
-
+function jsonDiputados(){
  $.getJSON("http://encuentro-sam23d.rhcloud.com/api/candidatos",
         {
           action: "query",
@@ -30,7 +32,7 @@
 
         });
   
- 
+} 
 function changeColor(diputado)
 {
   var distrito = "dis" + diputado.district;

@@ -11,7 +11,7 @@ var mapita = getUrlParameter('mapa');
  }else if(mapita==4){
     $(".tab-bar").css("background-color","#C2571A");
     
-    window.setTimeout(casillas,2000);
+    //window.setTimeout(casillas,2000);
  }
 
  if(mapita=="undefined"){
@@ -19,6 +19,7 @@ var mapita = getUrlParameter('mapa');
  }
 
 function casillas(){
+    //window.alert("casillista");
      $.getJSON("http://encuentro-sam23d.rhcloud.com/api/casillas",
         {
           action: "query",
@@ -45,9 +46,9 @@ function casillas(){
 }
 
 function casillasData(data){
-  
+    
     for(keys in data){
-        
+      //  window.alert(data[keys].seccion);
         $("#"+data[keys].seccion).attr("fill","#f88d1e");
         $("#"+data[keys].seccion).css({ fill: "#fb881e" });
         
@@ -96,7 +97,7 @@ function colorAyuntamiento(data)
 function modal(clicked_id)
 {
    
-    if(window.location.pathname == '/temp.html')
+    if(window.location.pathname == '/movimiento/temp.html')
     {   
 
         if(map=="2"){     
@@ -123,7 +124,7 @@ function modal(clicked_id)
             {
           
                 if(jsonS[key].seccion == clicked_id){
-                    $("#table2").append("<tr><th>"+json[key].name+"</th><th>"+json[key].fLastname+"</th><th>"+json[key].mLastname+"</th><th>"+json[key].celular+"</th><th>"+json[key].correo+"</th><th>"+json[key].sexo+"</th><th>"+json[key].domiciio+"</th></tr>");
+                    $("#table2").append("<tr><th>"+jsonS[key].name+"</th><th>"+jsonS[key].fLastname+"</th><th>"+jsonS[key].mLastname+"</th><th>"+jsonS[key].celular+"</th><th>"+jsonS[key].correo+"</th><th>"+jsonS[key].sexo+"</th><th>"+jsonS[key].domiciio+"</th></tr>");
                 }
             }
             $('#myModal').foundation('reveal','open');
@@ -152,7 +153,7 @@ function modal(clicked_id)
         var mapa = getUrlParameter('mapa');
         if(mapa == "2" || mapa == "3" || mapa == "4")
         {
-            window.location.href = "/temp.html?svg=" + clicked_id+"&mapa="+mapa;
+            window.location.href = "temp.html?svg=" + clicked_id+"&mapa="+mapa;
         }else{ //Aqui mapa 1 
             $("#name").html(clicked_id);
             $("#ModalBorrable").empty();
