@@ -2,6 +2,9 @@ var jsonCasillas;
 var jsonCasillas2;
 var jsonAyuntamientos;
 var mapita = getUrlParameter('mapa');
+var presidenteS = "presidente";
+var regidorS = "regidor";
+var sindicoS = "sindico"
 
  if(mapita == 2){
    $(".tab-bar").css("background-color","#107896");
@@ -94,6 +97,24 @@ function colorAyuntamiento(data)
     }
 }
 
+function suplente(id,tipo)
+{
+    $("#idS").val(id);
+    $("#tipoS").val(tipo);
+    $('#modalSuplente').foundation('reveal','open');
+}
+function saveSuplente()
+{
+    $.ajax({
+              url: 'http://encuentro-sam23d.rhcloud.com//api/suplentes/create/0',
+              type: 'post',
+              data: $('form#formaSu').serialize(),
+              success: function(data) {
+                location.reload();
+                       }
+          });
+}
+
 function modal(clicked_id)
 {
    
@@ -155,6 +176,7 @@ function modal(clicked_id)
         {
             window.location.href = "temp.html?svg=" + clicked_id+"&mapa="+mapa;
         }else{ //Aqui mapa 1 
+
             $("#name").html(clicked_id);
             $("#ModalBorrable").empty();
             $("#tableRegidores").empty();
@@ -168,23 +190,79 @@ function modal(clicked_id)
 
                     $(".lead").html("");
                     $("#ModalBorrable").append("<h5>Presidente</h5>");
-                    $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th></thead><tr><th>"+jsonAyuntamientos[keys].presidente.name+"</th><th>"+jsonAyuntamientos[keys].presidente.fLastname+"</th><th>"+jsonAyuntamientos[keys].presidente.mLastname+"</th><th>"+jsonAyuntamientos[keys].presidente.celular+"</th><th>"+jsonAyuntamientos[keys].presidente.correo+"</th></table>");
-                    $("#ModalBorrable").append("<h5>Sindico</h5>");
-                    $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th></thead><tr><th>"+jsonAyuntamientos[keys].sindico.name+"</th><th>"+jsonAyuntamientos[keys].sindico.fLastname+"</th><th>"+jsonAyuntamientos[keys].sindico.mLastname+"</th><th>"+jsonAyuntamientos[keys].sindico.celular+"</th><th>"+jsonAyuntamientos[keys].sindico.correo+"</th></table>");
-                    $("#ModalBorrable").append("<h5>Regidores</h5>");
-                    $("#tableRegidores").append("<thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th></thead>");
+                    getSuplP(jsonAyuntamientos[keys]);
+                    
+                   
+                }
+            }
+            
+
+        }
+    }
+}
+
+function getSuplP(ayuntamiento)
+{
+    
+    $.getJSON("http://encuentro-sam23d.rhcloud.com/api/suplentes/presidente/"+ayuntamiento.presidente.id,
+        {
+          action: "query",
+          list: "search"
+          
+        },
+        function(data) {
+            agregarSuplentePr(ayuntamiento,data);
+        }).fail(function() {
+            agregarSuplentePr(ayuntamiento,0);
+        });   
+}
+
+function agregarSuplentePr(ayuntamiento,suplente)
+{
+      
+    if(suplente == 0){
+        $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th><th width='150'></th></thead><tr><th>"+ayuntamiento.presidente.name+"</th><th>"+ayuntamiento.presidente.fLastname+"</th><th>"+ayuntamiento.presidente.mLastname+"</th><th>"+ayuntamiento.presidente.celular+"</th><th>"+ayuntamiento.presidente.correo+"</th><th><a onclick='suplente("+ayuntamiento.presidente.id+",presidenteS)' class='button tiny' >Agregar Suplente</a></th></tr></table>");
+    }else{
+        $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th><th width='150'></th></thead><tr><th>"+ayuntamiento.presidente.name+"</th><th>"+ayuntamiento.presidente.fLastname+"</th><th>"+ayuntamiento.presidente.mLastname+"</th><th>"+ayuntamiento.presidente.celular+"</th><th>"+ayuntamiento.presidente.correo+"</th><th><a onclick='suplente("+ayuntamiento.presidente.id+",presidenteS)' class='button tiny' >Agregar Suplente</a></th></tr><tr><th>"+
+                                               suplente.name+"</th><th>"+suplente.fLastname+"</th><th>"+suplente.mLastname+"</th><th>"+suplente.celular+"</th><th>"+suplente.correo+"</th><th>Suplente</th></table>");
+    }
+     $("#ModalBorrable").append("<h5>Sindico</h5>");
+     getSupSin(ayuntamiento);
+                   
+                    
+}
+
+function getSupSin(ayuntamiento){
+    $.getJSON("http://encuentro-sam23d.rhcloud.com/api/suplentes/sindico/"+ayuntamiento.sindico.id,
+        {
+          action: "query",
+          list: "search"
+          
+        },
+        function(data) {
+            agregarSuplenteSin(ayuntamiento,data);
+        }).fail(function() {
+            agregarSuplenteSin(ayuntamiento,0);
+        }); 
+}
+
+function agregarSuplenteSin(ayuntamiento,suplente)
+{
+    if(suplente == 0){
+        window.alert("cero")
+         $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th><th width='150'></th></thead><tr><th>"+ayuntamiento.sindico.name+"</th><th>"+ayuntamiento.sindico.fLastname+"</th><th>"+ayuntamiento.sindico.mLastname+"</th><th>"+ayuntamiento.sindico.celular+"</th><th>"+ayuntamiento.sindico.correo+"<th><a onclick='suplente("+ayuntamiento.sindico.id+",sindicoS)' class='button tiny' >Agregar Suplente</a></th></table>");
+    }else{
+         $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th><th width='150'></th></thead><tr><th>"+ayuntamiento.sindico.name+"</th><th>"+ayuntamiento.sindico.fLastname+"</th><th>"+ayuntamiento.sindico.mLastname+"</th><th>"+ayuntamiento.sindico.celular+"</th><th>"+ayuntamiento.sindico.correo+"<th><a onclick='suplente("+yuntamiento.sindico.id+",sindicoS)' class='button tiny' >Agregar Suplente</a></th><th>"+suplente.name+"</th><th>"+suplente.fLastname+"</th><th>"+suplente.mLastname+"</th><th>"+suplente.celular+"</th><th>"+suplente.correo+"</th><th>Suplente</th></table>");
+    }
+    $("#ModalBorrable").append("<h5>Regidores</h5>");
+                    $("#tableRegidores").append("<thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'></th></thead>");
                     for(regidores in jsonAyuntamientos[keys].regidores){
-                        $("#tableRegidores").append("<tr><th>" +  jsonAyuntamientos[keys].regidores[regidores].name + "</th><th>" +jsonAyuntamientos[keys].regidores[regidores].fLastname+"</th><th>"+jsonAyuntamientos[keys].regidores[regidores].mLastname+"</th></tr>")
+                        $("#tableRegidores").append("<tr><th>" +  ayuntamiento.regidores[regidores].name + "</th><th>" +ayuntamientos.regidores[regidores].fLastname+"</th><th>"+ayuntamiento.regidores[regidores].mLastname+"</th><th><a onclick='suplente("+ayuntamiento.regidores[regidores].id+",regidorS)' class='button tiny' >Agregar Suplente</a></th></</tr>")
                     
                     }
                     $( "#CrearP" ).prop( "disabled", true );
                     $( "#CrearR" ).prop( "disabled", false );
-                }
-            }
-            $('#myModal').foundation('reveal','open');
-
-        }
-    }
+    $('#myModal').foundation('reveal','open');
 }
 
 function cambiarColor(data){
