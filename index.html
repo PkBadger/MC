@@ -48,12 +48,7 @@
     </aside>
 
     <aside class="right-off-canvas-menu">
-    <ul class="off-canvas-list">
-        <li><label>Diputados</label></li>
-        <li><a onclick="$('#myModal').foundation('reveal','open');">Agregar Diputado</a></li>
-        
-    
-    </ul>
+   
       <ul class="off-canvas-list">
         <li><label>Estadisticas</label></li>
         <li><a onclick="statics()">Estadisticas de diputados</a></li>
@@ -1868,7 +1863,7 @@
 			<div class="row">
 			    <div class="small-4 columns">
 			      <label>Distrito
-			        <input type="number" name="distrito" min="1" max="22">
+			        <input type="number" id="disCambiar" name="distrito" readonly min="1" max="22">
   					
 			      </label>
 				</div>
@@ -1911,6 +1906,8 @@
               <thead>
                 <tr>
                   <th width="150">Nombre</th>
+                  <th width="150">Apellido Paterno</th>
+                  <th width="150">Apellido Materno</th>
                   <th width="150">Cargo</th>
                   <th width="150">Telefono</th>
                   <th width="150">Email</th>
@@ -1924,8 +1921,11 @@
               </tbody>
             </table>
 
-       		<div class="small-6 columns small-offset-3 columns">
+       		<div class="small-6 columns">
 				<a onclick="" id="mapa" class="button"style="width:100%;" >Ir a Mapa Municipal</a>
+			</div>	
+			<div class="small-6 columns">
+				<a class="button"style="width:100%;" onclick="modalDiputados()" >Agregar Diputado</a>
 			</div>	
           <a class="close-reveal-modal" aria-label="Close">&#215;</a>
          
@@ -1937,11 +1937,10 @@
           <a class="close-reveal-modal" aria-label="Close">&#215;</a>
          
         </div>
-    <div style="background-color:#ffff66;">
-		<footer>
-			<p style="text-align:center;border-top:15px;"><b>Developed by:</b> <br>Samuel Blanco and Francisco Tejón</p>
-		</footer>
-	</div>
+    <div class="large-12 columns footer">
+      <p class="margin"><b>Desarrolladores:</b><br><a href="mailto:francisco.tejon93@gmail.com">Samuel Blanco Santana</a><br><a href="mailto:francisco.tejon93@gmail.com" tite="francisco.tejon93@gmail.com">José Francisco Tejón Sáenz</a><br>Contacto: <br>Email: <a href="mailto:francisco.tejon93@gmail.com">francisco.tejon93@gmail.com</a>
+       
+    </div>
 	</body>
 
 

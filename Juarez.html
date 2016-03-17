@@ -24,9 +24,7 @@
       <section class="middle tab-bar-section">
         <h1 class="title">Juarez</h1>
       </section>
-      <section class="right-small">
-        <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
-      </section>
+      
 
       
     </nav>
@@ -44,15 +42,7 @@
     </ul>
     </aside>
 
-    <aside class="right-off-canvas-menu">
-    <ul class="off-canvas-list">
-        <li><label>Diputados</label></li>
-        <li><a onclick="$('#myModal').foundation('reveal','open');">Agregar Diputado</a></li>
-        
-    
-    </ul>
-        
-    </aside>
+   
 
 
 
@@ -179,7 +169,7 @@
             <div class="row">
                 <div class="small-4 columns">
                   <label>Distrito
-                    <input type="number" name="distrito" min="1" max="22">
+                    <input type="number" readonly id="disCambiar" name="distrito" min="1" max="22">
                     
                   </label>
                 </div>
@@ -222,6 +212,8 @@
               <thead>
                 <tr>
                   <th width="150">Nombre</th>
+                  <th width="150">Apellido Paterno</th>
+                  <th width="150">Apellido Materno</th>
                   <th width="150">Cargo</th>
                   <th width="150">Telefono</th>
                   <th width="150">Email</th>
@@ -240,6 +232,9 @@
             </div>  
             <div class="small-6 columns">
                 <a onclick="planillaJuarez()" class="button"style="width:100%;" >Planilla de Juarez</a>
+            </div>   
+          <div class="small-6 columns small-offset-3 columns">
+                <a onclick="modalDiputados()" class="button"style="width:100%;" >Agregar Diputado</a>
             </div>   
           <a class="close-reveal-modal" aria-label="Close">&#215;</a>
          

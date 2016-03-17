@@ -6577,3 +6577,12 @@ th.hide-for-touch {
 
   th.show-for-print {
     display: table-cell !important; } }
+.footer{
+  background-color: #CFCF7C;
+  text-align: center;
+  margin-color: #CFCF7C;
+  padding-bottom: 30px;
+}
+.margin{
+  margin-top: 1cm;
+}

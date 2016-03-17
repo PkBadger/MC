@@ -11,7 +11,13 @@
   jsonDiputados()
  }
 
- 
+function modalDiputados(){
+  var distrito = $("#nombre").html();
+  distrito = distrito.replace('dis','');
+
+  $("#disCambiar").val(distrito);
+  $('#myModal').foundation('reveal','open');
+}
 
 function jsonDiputados(){
  $.getJSON("http://encuentro-sam23d.rhcloud.com/api/candidatos",
@@ -77,13 +83,24 @@ function subir(){
 
 
 function choose(id,link){
+   if(mapa == 2 || mapa == 3 || mapa == 4){
+     window.location.href = link+"?mapa="+ mapa;
+   }else{
+    
+   
   $("#mapa").attr("onclick","window.location.href = '" + link+"?mapa="+ mapa +"'" );
   show(id);
+  }
 }
 
 function chooseD(id){
-  $("#mapa").attr("onclick","window.location.href ='temp.html?svg="+id +"&mapa="+ mapa +"'");
-  show(id);
+   if(mapa == 2 || mapa == 3 || mapa == 4){
+     window.location.href = "temp.html?svg="+id +"&mapa="+ mapa 
+   }else{
+    $("#mapa").attr("onclick","window.location.href ='temp.html?svg="+id +"&mapa="+ mapa +"'");
+    show(id);
+  }
+
 }
 
 
@@ -99,7 +116,7 @@ function show(id){
     {
         if(json[keys].district == id)
         {
-          var string = "<td>" + json[keys].name +" " +json[keys].flastname + " " +json[keys].mlastname +"</td><td>"+json[keys].cargo+"</td><td>"+json[keys].cel+"</td><td>"+json[keys].email+"<td>"
+          var string = "<td>" + json[keys].name +"</td><td> " +json[keys].flastname + " </td><td>" +json[keys].mlastname +"</td><td>"+json[keys].cargo+"</td><td>"+json[keys].cel+"</td><td>"+json[keys].email+"<td>"
           if(json[keys].cargo =="propietario")
           {
             $("#propietariom").html(string);
