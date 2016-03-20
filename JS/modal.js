@@ -4,7 +4,8 @@ var jsonAyuntamientos;
 var mapita = getUrlParameter('mapa');
 var presidenteS = "presidente";
 var regidorS = "regidor";
-var sindicoS = "sindico"
+var sindicoS = "sindico";
+
 
  if(mapita == 2){
    $(".tab-bar").css("background-color","#107896");
@@ -117,7 +118,8 @@ function saveSuplente()
 
 function modal(clicked_id)
 {
-   
+
+    var bandera = false;   
     if(window.location.pathname == '/movimiento/temp.html')
     {   
 
@@ -132,7 +134,8 @@ function modal(clicked_id)
             {
                 if(json[keys].seccion == clicked_id){
                     var texttype = "Subpromotor";
-                    if(json[keys].tipo == "grl")
+
+                    if(json[keys].tipo == "promotor")
                     {
                         texttype = "Promotor";
                     }
@@ -190,11 +193,14 @@ function modal(clicked_id)
 
                     $(".lead").html("");
                     $("#ModalBorrable").append("<h5>Presidente</h5>");
+                    bandera = true;
                     getSuplP(jsonAyuntamientos[keys]);
                     
-                   
+                    
                 }
             }
+            if(!bandera){
+            $('#myModal').foundation('reveal','open');}
             
 
         }
@@ -214,6 +220,7 @@ function getSuplP(ayuntamiento)
             agregarSuplentePr(ayuntamiento,data);
         }).fail(function() {
             agregarSuplentePr(ayuntamiento,0);
+
         });   
 }
 
@@ -223,7 +230,7 @@ function agregarSuplentePr(ayuntamiento,suplente)
     if(suplente == 0){
         $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th><th width='150'></th></thead><tr><th>"+ayuntamiento.presidente.name+"</th><th>"+ayuntamiento.presidente.fLastname+"</th><th>"+ayuntamiento.presidente.mLastname+"</th><th>"+ayuntamiento.presidente.celular+"</th><th>"+ayuntamiento.presidente.correo+"</th><th><a onclick='suplente("+ayuntamiento.presidente.id+",presidenteS)' class='button tiny' >Agregar Suplente</a></th></tr></table>");
     }else{
-        $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th><th width='150'></th></thead><tr><th>"+ayuntamiento.presidente.name+"</th><th>"+ayuntamiento.presidente.fLastname+"</th><th>"+ayuntamiento.presidente.mLastname+"</th><th>"+ayuntamiento.presidente.celular+"</th><th>"+ayuntamiento.presidente.correo+"</th><th><a onclick='suplente("+ayuntamiento.presidente.id+",presidenteS)' class='button tiny' >Agregar Suplente</a></th></tr><tr><th>"+
+        $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th><th width='150'></th></thead><tr><th>"+ayuntamiento.presidente.name+"</th><th>"+ayuntamiento.presidente.fLastname+"</th><th>"+ayuntamiento.presidente.mLastname+"</th><th>"+ayuntamiento.presidente.celular+"</th><th>"+ayuntamiento.presidente.correo+"</th><th><a disabled class='button tiny' >Agregar Suplente</a></th></tr><tr><th>"+
                                                suplente.name+"</th><th>"+suplente.fLastname+"</th><th>"+suplente.mLastname+"</th><th>"+suplente.celular+"</th><th>"+suplente.correo+"</th><th>Suplente</th></table>");
     }
      $("#ModalBorrable").append("<h5>Sindico</h5>");
@@ -248,21 +255,62 @@ function getSupSin(ayuntamiento){
 
 function agregarSuplenteSin(ayuntamiento,suplente)
 {
+    numReg = Object.keys(ayuntamiento.regidores).length;
+   
     if(suplente == 0){
-        window.alert("cero")
+        
          $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th><th width='150'></th></thead><tr><th>"+ayuntamiento.sindico.name+"</th><th>"+ayuntamiento.sindico.fLastname+"</th><th>"+ayuntamiento.sindico.mLastname+"</th><th>"+ayuntamiento.sindico.celular+"</th><th>"+ayuntamiento.sindico.correo+"<th><a onclick='suplente("+ayuntamiento.sindico.id+",sindicoS)' class='button tiny' >Agregar Suplente</a></th></table>");
     }else{
-         $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th><th width='150'></th></thead><tr><th>"+ayuntamiento.sindico.name+"</th><th>"+ayuntamiento.sindico.fLastname+"</th><th>"+ayuntamiento.sindico.mLastname+"</th><th>"+ayuntamiento.sindico.celular+"</th><th>"+ayuntamiento.sindico.correo+"<th><a onclick='suplente("+yuntamiento.sindico.id+",sindicoS)' class='button tiny' >Agregar Suplente</a></th><th>"+suplente.name+"</th><th>"+suplente.fLastname+"</th><th>"+suplente.mLastname+"</th><th>"+suplente.celular+"</th><th>"+suplente.correo+"</th><th>Suplente</th></table>");
+         $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th><th width='150'></th></thead><tr><th>"+ayuntamiento.sindico.name+"</th><th>"+ayuntamiento.sindico.fLastname+"</th><th>"+ayuntamiento.sindico.mLastname+"</th><th>"+ayuntamiento.sindico.celular+"</th><th>"+ayuntamiento.sindico.correo+"<th><a disabled  class='button tiny' >Agregar Suplente</a></th><tr><th>"+suplente.name+"</th><th>"+suplente.fLastname+"</th><th>"+suplente.mLastname+"</th><th>"+suplente.celular+"</th><th>"+suplente.correo+"</th><th>Suplente</th></tr></table>");
     }
     $("#ModalBorrable").append("<h5>Regidores</h5>");
                     $("#tableRegidores").append("<thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'></th></thead>");
-                    for(regidores in jsonAyuntamientos[keys].regidores){
-                        $("#tableRegidores").append("<tr><th>" +  ayuntamiento.regidores[regidores].name + "</th><th>" +ayuntamientos.regidores[regidores].fLastname+"</th><th>"+ayuntamiento.regidores[regidores].mLastname+"</th><th><a onclick='suplente("+ayuntamiento.regidores[regidores].id+",regidorS)' class='button tiny' >Agregar Suplente</a></th></</tr>")
-                    
+                    for(regidores in ayuntamiento.regidores){
+                        
+                        getSupReg(ayuntamiento.regidores[regidores],numReg,regidores);
                     }
-                    $( "#CrearP" ).prop( "disabled", true );
+                    if(numReg == 0){
+                       $( "#CrearP" ).prop( "disabled", true );
                     $( "#CrearR" ).prop( "disabled", false );
-    $('#myModal').foundation('reveal','open');
+                      $('#myModal').foundation('reveal','open');
+                    }
+                    
+}
+
+function getSupReg(regidores,numReg,numero)
+{
+   $.getJSON("http://encuentro-sam23d.rhcloud.com/api/suplentes/regidor/"+regidores.id,
+        {
+          action: "query",
+          list: "search"
+          
+        },
+        function(data) {
+            agregarSuplenteReg(regidores,data,numReg,numero);
+        }).fail(function() {
+            agregarSuplenteReg(regidores,0,numReg,numero);
+        }); 
+
+}
+
+function agregarSuplenteReg(regidor,suplente,numReg,numero){
+  if(suplente == 0){
+     $("#tableRegidores").append("<tr><th>" +  regidor.name + "</th><th>" +regidor.fLastname+"</th><th>"+regidor.mLastname+"</th><th><a onclick='suplente("+regidor.id+",regidorS)' class='button tiny' >Agregar Suplente</a></th></</tr>");
+
+  }else{
+     $("#tableRegidores").append("<tr><th>" +  regidor.name + "</th><th>" +regidor.fLastname+"</th><th>"+regidor.mLastname+"</th><th><a  class='button tiny' disabled >Agregar Suplente</a></th></</tr><tr><th>" +  suplente.name + "</th><th>" +suplente.fLastname+"</th><th>"+suplente.mLastname+"</th><th>Suplente</th></tr>")
+  }
+  
+  if(numReg-1 == parseInt(numero)){
+    
+  $( "#CrearP" ).prop( "disabled", true );
+                    $( "#CrearR" ).prop( "disabled", false );
+
+                    if(municipios[0] == "Chihuahua" || municipios[0] == "Juarez"){
+                     $('#myModalA').foundation('reveal','open');}
+                     else{
+                     $('#myModal').foundation('reveal','open');}
+  }   
 }
 
 function cambiarColor(data){
@@ -323,7 +371,7 @@ function modals(clicked_id)
             {
                 if(json[keys].seccion == clicked_id){
                     var texttype = "Subpromotor";
-                    if(json[keys].tipo == "grl")
+                    if(json[keys].tipo == "promotor")
                     {
                         texttype = "Promotor"
                     }
@@ -370,7 +418,7 @@ function agregar(tipo,seccion){
 
     }else if(tipo=="promotor"){
         $("#nameA").html("Agregar Promotor");
-        $("#tipo").html('<label>Tipo</label><input type="radio" name="tipo" value="grl" id="gral"><label for="gral">Promotor</label><input type="radio" name="tipo" value="sub" id="subpromotor"><label for="subpromotor">Subpromotor</label>');
+        $("#tipo").html('<label>Tipo</label><input type="radio" name="tipo" value="promotor" id="gral"><label for="gral">Promotor</label><input type="radio" name="tipo" value="subpromotor" id="subpromotor"><label for="subpromotor">Subpromotor</label>');
         $("#submit").attr("onclick","saveP()");
     }
     $('#modalAgregar').foundation('reveal','open');   
@@ -546,38 +594,35 @@ function ajaxRepresentante(){
 }
 
 function planillaJuarez(){
-     var clicked_id = "Juarez" 
-     $("#nameA").html(clicked_id);
+     var clicked_id = "Juarez";
+     var bandera = false;
+    $("#nameA").html(clicked_id);
             $("#ModalBorrable").empty();
             $("#tableRegidores").empty();
             $( "#CrearP" ).prop( "disabled", false );
             $( "#CrearR" ).prop( "disabled", true );
-            console.log(jsonAyuntamientos);
+
             $(".lead").html("No hay información disponible");
             for(keys in jsonAyuntamientos){
-
                 if(jsonAyuntamientos[keys].name == clicked_id){
+                    
+
                     $(".lead").html("");
                     $("#ModalBorrable").append("<h5>Presidente</h5>");
-                    $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th></thead><tr><th>"+jsonAyuntamientos[keys].presidente.name+"</th><th>"+jsonAyuntamientos[keys].presidente.fLastname+"</th><th>"+jsonAyuntamientos[keys].presidente.mLastname+"</th><th>"+jsonAyuntamientos[keys].presidente.celular+"</th><th>"+jsonAyuntamientos[keys].presidente.correo+"</th></table>");
-                    $("#ModalBorrable").append("<h5>Sindico</h5>");
-                    $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th></thead><tr><th>"+jsonAyuntamientos[keys].sindico.name+"</th><th>"+jsonAyuntamientos[keys].sindico.fLastname+"</th><th>"+jsonAyuntamientos[keys].sindico.mLastname+"</th><th>"+jsonAyuntamientos[keys].sindico.celular+"</th><th>"+jsonAyuntamientos[keys].sindico.correo+"</th></table>");
-                    $("#ModalBorrable").append("<h5>Regidores</h5>");
-                    $("#tableRegidores").append("<thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th></thead>");
-                    for(regidores in jsonAyuntamientos[keys].regidores){
-                        $("#tableRegidores").append("<tr><th>" +  jsonAyuntamientos[keys].regidores[regidores].name + "</th><th>" +jsonAyuntamientos[keys].regidores[regidores].fLastname+"</th><th>"+jsonAyuntamientos[keys].regidores[regidores].mLastname+"</th></tr>")
+                    bandera = true;
+                    getSuplP(jsonAyuntamientos[keys]);
                     
-                    }
-                    $( "#CrearP" ).prop( "disabled", true );
-                    $( "#CrearR" ).prop( "disabled", false );
+                    
                 }
             }
-            $('#myModalA').foundation('reveal','open');
+            if(!bandera){
+            $('#myModalA').foundation('reveal','open');}
     
 }
 
 function planillaChihuahua(){
-    var clicked_id = "Chihuahua" 
+    var clicked_id = "Chihuahua";
+    var bandera = false; 
      $("#nameA").html(clicked_id);
             $("#ModalBorrable").empty();
             $("#tableRegidores").empty();
@@ -587,25 +632,49 @@ function planillaChihuahua(){
             $(".lead").html("No hay información disponible");
             for(keys in jsonAyuntamientos){
                 if(jsonAyuntamientos[keys].name == clicked_id){
+                    
+
                     $(".lead").html("");
                     $("#ModalBorrable").append("<h5>Presidente</h5>");
-                    $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th></thead><tr><th>"+jsonAyuntamientos[keys].presidente.name+"</th><th>"+jsonAyuntamientos[keys].presidente.fLastname+"</th><th>"+jsonAyuntamientos[keys].presidente.mLastname+"</th><th>"+jsonAyuntamientos[keys].presidente.celular+"</th><th>"+jsonAyuntamientos[keys].presidente.correo+"</th></table>");
-                    $("#ModalBorrable").append("<h5>Sindico</h5>");
-                    $("#ModalBorrable").append("<table><thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Celular</th><th width='150'>Correo</th></thead><tr><th>"+jsonAyuntamientos[keys].sindico.name+"</th><th>"+jsonAyuntamientos[keys].sindico.fLastname+"</th><th>"+jsonAyuntamientos[keys].sindico.mLastname+"</th><th>"+jsonAyuntamientos[keys].sindico.celular+"</th><th>"+jsonAyuntamientos[keys].sindico.correo+"</th></table>");
-                    $("#ModalBorrable").append("<h5>Regidores</h5>");
-                    $("#tableRegidores").append("<thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th></thead>");
-                    for(regidores in jsonAyuntamientos[keys].regidores){
-                        $("#tableRegidores").append("<tr><th>" +  jsonAyuntamientos[keys].regidores[regidores].name + "</th><th>" +jsonAyuntamientos[keys].regidores[regidores].fLastname+"</th><th>"+jsonAyuntamientos[keys].regidores[regidores].mLastname+"</th></tr>")
+                    bandera = true;
+                    getSuplP(jsonAyuntamientos[keys]);
                     
-                    }
-                    $( "#CrearP" ).prop( "disabled", true );
-                    $( "#CrearR" ).prop( "disabled", false );
+                    
                 }
             }
-            $('#myModalA').foundation('reveal','open');
+            if(!bandera){
+            $('#myModalA').foundation('reveal','open');}
+            
+
+        
     
 
 }
+
+/*$("#name").html(clicked_id);
+            $("#ModalBorrable").empty();
+            $("#tableRegidores").empty();
+            $( "#CrearP" ).prop( "disabled", false );
+            $( "#CrearR" ).prop( "disabled", true );
+
+            $(".lead").html("No hay información disponible");
+            for(keys in jsonAyuntamientos){
+                if(jsonAyuntamientos[keys].name == clicked_id){
+                    
+
+                    $(".lead").html("");
+                    $("#ModalBorrable").append("<h5>Presidente</h5>");
+                    bandera = true;
+                    getSuplP(jsonAyuntamientos[keys]);
+                    
+                    
+                }
+            }
+            if(!bandera){
+            $('#myModal').foundation('reveal','open');}
+            
+
+        }*/
 var district=[
     {
         "nombre": "distrito 12",
