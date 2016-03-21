@@ -95,9 +95,9 @@ function choose(id,link){
 
 function chooseD(id){
    if(mapa == 2 || mapa == 3 || mapa == 4){
-     window.location.href = "temp.html?svg="+id +"&mapa="+ mapa 
+     window.location.href = "temp.php?svg="+id +"&mapa="+ mapa 
    }else{
-    $("#mapa").attr("onclick","window.location.href ='temp.html?svg="+id +"&mapa="+ mapa +"'");
+    $("#mapa").attr("onclick","window.location.href ='temp.php?svg="+id +"&mapa="+ mapa +"'");
     show(id);
   }
 

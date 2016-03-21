@@ -5,6 +5,7 @@ var mapita = getUrlParameter('mapa');
 var presidenteS = "presidente";
 var regidorS = "regidor";
 var sindicoS = "sindico";
+var isSeccion = false;
 
 
  if(mapita == 2){
@@ -120,64 +121,17 @@ function modal(clicked_id)
 {
 
     var bandera = false;   
-    if(window.location.pathname == '/movimiento/temp.html')
+    if(isSeccion)
     {   
 
-        if(map=="2"){     
-            $("#table1").empty();
-            $("#table2").empty();
-            $("#name").text(clicked_id);
-            
-            $("#table1").append("<thead><th width='150'>Cargo</th><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Telefono</th><th width='150'>Correo</th><th width='150'>Sexo</th><th width='150'>Domicilio</th></thead>");
-            $("#table1").append("<tbody>");
-            for(keys in json)
-            {
-                if(json[keys].seccion == clicked_id){
-                    var texttype = "Subpromotor";
-
-                    if(json[keys].tipo == "promotor")
-                    {
-                        texttype = "Promotor";
-                    }
-                    $("#table1").append("<tr><th>"+ texttype+"</th><th>"+json[keys].name+"</th><th>"+json[keys].fLastname+"</th><th>"+json[keys].mLastname+"</th><th>"+json[keys].celular+"</th><th>"+json[keys].correo+"</th><th>"+json[keys].sexo+"</th><th>"+json[keys].domiciio+"</th></tr>");
-                }
-            }
-
-            $("#table2").append("<thead><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Telefono</th><th width='150'>Correo</th><th width='150'>Sexo</th><th width='150'>Domicilio</th></thead>");
-            for(key in jsonS)
-            {
-          
-                if(jsonS[key].seccion == clicked_id){
-                    $("#table2").append("<tr><th>"+jsonS[key].name+"</th><th>"+jsonS[key].fLastname+"</th><th>"+jsonS[key].mLastname+"</th><th>"+jsonS[key].celular+"</th><th>"+jsonS[key].correo+"</th><th>"+jsonS[key].sexo+"</th><th>"+jsonS[key].domiciio+"</th></tr>");
-                }
-            }
-            $('#myModal').foundation('reveal','open');
-        } else if(map=="3"){
-            $("#name2").text(clicked_id);
-            $('#modalColor').foundation('reveal','open');
-
-        }else{
-
-              $("#tableCasilla").empty();
-             $("#hCasilla").html(clicked_id);
-             $("#pCasilla").html("No hay información disponible");
-             $("#tableCasilla").append("<thead><th width='150'>Tipo</th><th width='150'>Nombre</th><th width='150'>Apellido Paterno</th><th width='150'>Apellido materno</th><th width='150'>Telefono</th><th width='150'>Correo</th><th width='150'>Casilla</th></thead>");
-             for(keys in jsonCasillas2){
-                if(jsonCasillas2[keys].casilla.seccion == clicked_id){
-                     
-                    $("#tableCasilla").append("<tr><th>"+jsonCasillas2[keys].tipo+"</th><th>"+jsonCasillas2[keys].name+"</th><th>"+jsonCasillas2[keys].flastname+"</th><th>"+jsonCasillas2[keys].mlastname+"</th><th>"+jsonCasillas2[keys].cel+"</th><th>"+jsonCasillas2[keys].email+"</th><th>"+jsonCasillas2[keys].casilla.tipo+"</th></tr>");
-                    $("#pCasilla").empty();
-                }
-             }
-             $('#modalCasillas').foundation('reveal','open');
-        }
+       modals(clicked_id);
     }
     else{
 
         var mapa = getUrlParameter('mapa');
         if(mapa == "2" || mapa == "3" || mapa == "4")
         {
-            window.location.href = "temp.html?svg=" + clicked_id+"&mapa="+mapa;
+            window.location.href = "temp.php?svg=" + clicked_id+"&mapa="+mapa;
         }else{ //Aqui mapa 1 
 
             $("#name").html(clicked_id);
@@ -352,7 +306,7 @@ function changeColor(cuenta, seccion){
    
 
     $("#" + seccion).attr("fill","#cc7000");
-    $("#" + seccion).attr("fill-opacity",cuenta*.05);
+    $("#" + seccion).attr("fill-opacity",cuenta*.02);
     $('#'+ seccion).css({ fill: "#cc7000"});
 
 
