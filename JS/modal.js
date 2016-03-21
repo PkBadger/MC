@@ -25,7 +25,7 @@ var isSeccion = false;
 
 function casillas(){
     //window.alert("casillista");
-     $.getJSON("http://encuentro-sam23d.rhcloud.com/api/casillas",
+     $.getJSON(backEndUrl+"/api/casillas",
         {
           action: "query",
           list: "search"
@@ -37,7 +37,7 @@ function casillas(){
             casillasData(data);
 
         });
-     $.getJSON("http://encuentro-sam23d.rhcloud.com/api/representantes",
+     $.getJSON(backEndUrl+"/api/representantes",
         {
           action: "query",
           list: "search"
@@ -62,7 +62,7 @@ function casillasData(data){
 
 function ayuntamientos()
 {
-     $.getJSON("http://encuentro-sam23d.rhcloud.com/api/ayuntamientos",
+     $.getJSON(backEndUrl+"/api/ayuntamientos",
         {
           action: "query",
           list: "search"
@@ -108,7 +108,7 @@ function suplente(id,tipo)
 function saveSuplente()
 {
     $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com//api/suplentes/create/0',
+              url: backEndUrl+'/api/suplentes/create/0',
               type: 'post',
               data: $('form#formaSu').serialize(),
               success: function(data) {
@@ -164,7 +164,7 @@ function modal(clicked_id)
 function getSuplP(ayuntamiento)
 {
     
-    $.getJSON("http://encuentro-sam23d.rhcloud.com/api/suplentes/presidente/"+ayuntamiento.presidente.id,
+    $.getJSON(backEndUrl+"/api/suplentes/presidente/"+ayuntamiento.presidente.id,
         {
           action: "query",
           list: "search"
@@ -194,7 +194,7 @@ function agregarSuplentePr(ayuntamiento,suplente)
 }
 
 function getSupSin(ayuntamiento){
-    $.getJSON("http://encuentro-sam23d.rhcloud.com/api/suplentes/sindico/"+ayuntamiento.sindico.id,
+    $.getJSON( backEndUrl +"/api/suplentes/sindico/"+ayuntamiento.sindico.id,
         {
           action: "query",
           list: "search"
@@ -233,7 +233,7 @@ function agregarSuplenteSin(ayuntamiento,suplente)
 
 function getSupReg(regidores,numReg,numero)
 {
-   $.getJSON("http://encuentro-sam23d.rhcloud.com/api/suplentes/regidor/"+regidores.id,
+   $.getJSON( backEndUrl +"/api/suplentes/regidor/"+regidores.id,
         {
           action: "query",
           list: "search"
@@ -290,7 +290,7 @@ function cambiarColor(data){
 }
 
 function getNumber(seccion){
-     $.getJSON("http://encuentro-sam23d.rhcloud.com/api/simpatizantes?count=" + seccion,
+     $.getJSON(backEndUrl+ "/api/simpatizantes?count=" + seccion,
         {
           action: "query",
           list: "search"
@@ -382,7 +382,7 @@ function saveS(){
 
   
     $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com/api/simpatizantes',
+              url: backEndUrl+'/api/simpatizantes',
               type: 'post',
               data: $('form#forma').serialize(),
               success: function(data) {
@@ -393,7 +393,7 @@ function saveS(){
 }
 function saveP(){
     $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com/api/promotores',
+              url: backEndUrl+'/api/promotores',
               type: 'post',
               data: $('form#forma').serialize(),
               success: function(data) {
@@ -406,7 +406,7 @@ function saveColor(color,id){
     var id = $('#name2').text();
  
     $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com/api/colores',
+              url: backEndUrl+'/api/colores',
               type: 'post',
               data: "seccion="+id+"&color=" + color +"&municipio="+svg,
               success: function(data) {
@@ -448,7 +448,7 @@ function saveRegidor(){
         }
      }
      $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com/api/regidores',
+              url: backEndUrl+'/api/regidores',
               type: 'post',
               data: $('form#forma').serialize(),
               success: function(data) {
@@ -459,7 +459,7 @@ function saveRegidor(){
 
 function savePresident(){
     $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com/api/presidentes',
+              url: backEndUrl+'/api/presidentes',
               type: 'post',
               data: $('form#forma1').serialize(),
               success: function(data) {
@@ -472,7 +472,7 @@ function savePresident(){
 function saveSindico(presidente){
     
     $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com/api/sindicos',
+              url: backEndUrl + '/api/sindicos',
               type: 'post',
               data: $('form#forma2').serialize(),
               success: function(data) {
@@ -489,7 +489,7 @@ function saveAyun(sindico,presidente){
             'nombre' : $("#Ayuntamiento").html()
     };
     $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com/api/ayuntamientos',
+              url: backEndUrl + '/api/ayuntamientos',
               type: 'post',
               data: values,
               success: function(data) {
@@ -524,7 +524,7 @@ function saveRepresentante(){
             "tipo":tipo
         }
         $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com/api/casillas',
+              url: backEndUrl + '/api/casillas',
               type: 'post',
               data: values,
               success: function(data) {
@@ -538,7 +538,7 @@ function saveRepresentante(){
 
 function ajaxRepresentante(){
     $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com/api/representantes',
+              url: backEndUrl + '/api/representantes',
               type: 'post',
               data: $('form#formaC').serialize(),
               success: function(data) {

@@ -5,7 +5,7 @@
         print "Necesitas credenciales validas para entrar!\n";
         exit;
     } else {
-        if (($_SERVER['PHP_AUTH_USER'] == 'paul') && ($_SERVER['PHP_AUTH_PW'] == 'hudson')) {
+        if (($_SERVER['PHP_AUTH_USER'] == 'admin') && ($_SERVER['PHP_AUTH_PW'] == 'Movimiento2016.')) {
             
         } else {
             header("WWW-Authenticate: Basic realm=\"Private Area\"");

@@ -20,7 +20,7 @@ function modalDiputados(){
 }
 
 function jsonDiputados(){
- $.getJSON("http://encuentro-sam23d.rhcloud.com/api/candidatos",
+ $.getJSON(backEndUrl+"/api/candidatos",
         {
           action: "query",
           list: "search"
@@ -69,7 +69,7 @@ function subir(){
         if(!flag)
         {
           $.ajax({
-              url: 'http://encuentro-sam23d.rhcloud.com/api/candidatos',
+              url: backEndUrl + '/api/candidatos',
               type: 'post',
               data: $('form#myForm').serialize(),
               success: function(data) {
@@ -103,6 +103,23 @@ function chooseD(id){
 
 }
 
+function broadcastMail(){
+    var mailto = "mailto:";
+    $.getJSON(backEndUrl+"/api/simpatizantes",
+        {
+          action: "query",
+          list: "search"
+          
+        },
+        function(data) {
+           for(key in data)
+            {
+              mailto = mailto.concat(data[key].correo + ",")
+            }
+            window.location.href = mailto;
+
+        });   
+}
 
 function show(id){
 

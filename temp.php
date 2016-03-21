@@ -11,6 +11,7 @@ require_once('login.php');
 	    <script src="foundation/js/vendor/modernizr.js"></script>
 	    <script src="foundation/js/vendor/jquery.js"></script>
 	    <script src="foundation/js/foundation.min.js"></script>
+         <script src="JS/GeneralVars.js"></script>
 		
 		<script src="JS/getparam.js"></script>
 		
@@ -111,7 +112,7 @@ function jsons(){
    function json4(){
    
 
-   $.getJSON("http://encuentro-sam23d.rhcloud.com/api/promotores?municipio=" + svg,
+   $.getJSON(backEndUrl + "/api/promotores?municipio=" + svg,
           {
             action: "query",
             list: "search"
@@ -123,7 +124,7 @@ function jsons(){
               
 
           });
-    $.getJSON("http://encuentro-sam23d.rhcloud.com/api/simpatizantes?municipio=" + svg,
+    $.getJSON(backEndUrl + "/api/simpatizantes?municipio=" + svg,
           {
             action: "query",
             list: "search"
@@ -140,7 +141,7 @@ function jsons(){
    }
    function json3(){
     var json;
-    $.getJSON("http://encuentro-sam23d.rhcloud.com/api/colores",
+    $.getJSON(backEndUrl + "/api/colores",
           {
             action: "query",
             list: "search"

@@ -12,6 +12,7 @@ require_once('login.php');
     <script src="foundation/js/vendor/modernizr.js"></script>
     <script src="foundation/js/vendor/jquery.js"></script>
      <script src="foundation/js/foundation.min.js"></script>
+        <script src="JS/GeneralVars.js"></script>
      <script src="JS/getparam.js"></script>
     <script type="text/javascript">
     	var mapa = getUrlParameter('mapa');
@@ -48,6 +49,7 @@ require_once('login.php');
         <li><a href="index.php?mapa=3" style = "background-color:#829356;">Mapa de colores</a></li>
         <li><a href="index.php?mapa=4" style = "background-color:#C2571A;:">Casillas</a></li>
         <li><a href="http://encuentro-sam23d.rhcloud.com" style = "background-color:#ee6e73;:">Consola de Administración</a></li>
+        <li><a onclick="broadcastMail()">Mail a simpatizantes</a></li>
 
     
     </ul>
@@ -1944,10 +1946,7 @@ require_once('login.php');
           <a class="close-reveal-modal" aria-label="Close">&#215;</a>
          
         </div>
-    <div class="large-12 columns footer">
-      <p class="margin"><b>Desarrolladores:</b><br><a href="mailto:francisco.tejon93@gmail.com">Samuel Blanco Santana</a><br><a href="mailto:francisco.tejon93@gmail.com" tite="francisco.tejon93@gmail.com">José Francisco Tejón Sáenz</a><br>Contacto: <br>Email: <a href="mailto:francisco.tejon93@gmail.com">francisco.tejon93@gmail.com</a>
-       
-    </div>
+   
 	</body>
 
 

@@ -1,0 +1,1 @@
+var backEndUrl = "http://encuentro-sam23d.rhcloud.com";

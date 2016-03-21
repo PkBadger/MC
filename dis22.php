@@ -10,6 +10,7 @@ require_once('login.php');
         <script src="foundation/js/vendor/modernizr.js"></script>
         <script src="foundation/js/vendor/jquery.js"></script>
         <script src="foundation/js/foundation.min.js"></script>
+         <script src="JS/GeneralVars.js"></script>
     	
         <script src="JS/getparam.js"></script>
 
